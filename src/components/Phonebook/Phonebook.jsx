@@ -61,11 +61,11 @@ export class Phonebook extends Component {
     this.setState({ filter: value });
   };
 
-  resetFiler = () => {
+  resetFilter = () => {
     this.setState({ filter: '' });
   };
 
-  getFileredContacts = () => {
+  getFilteredContacts = () => {
     const { contacts, filter } = this.state;
 
     return contacts.filter(contact =>
@@ -75,7 +75,7 @@ export class Phonebook extends Component {
 
   render() {
     const { contacts, filter } = this.state;
-    const filteredContacts = this.getFileredContacts();
+    const filteredContacts = this.getFilteredContacts();
 
     return (
       <PhonebookWrapper>
@@ -86,7 +86,7 @@ export class Phonebook extends Component {
         <Filter
           value={filter}
           onChange={this.filterChange}
-          onClick={this.resetFiler}
+          onClick={this.resetFilter}
         />
         {contacts.length === 0 ? (
           <p>No contacts</p>
