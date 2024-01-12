@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { PhonebookWrapper, Subtitle, Title } from './Phonebook.styled';
 import { Filter } from 'components/Filter/Filter';
+import { getItem, setItem } from 'helpers/storage';
 
 export class Phonebook extends Component {
   state = {
@@ -15,6 +16,22 @@ export class Phonebook extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = getItem('contacts');
+
+    if (savedContacts) {
+      this.setState({ contacts: savedContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts) {
+      setItem('contacts', contacts);
+    }
+  }
 
   addContact = (name, number) => {
     const { contacts } = this.state;
