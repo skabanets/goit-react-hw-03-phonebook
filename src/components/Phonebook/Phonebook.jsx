@@ -91,11 +91,7 @@ export class Phonebook extends Component {
         {contacts.length === 0 ? (
           <p>No contacts</p>
         ) : (
-          <Contacts
-            contacts={filteredContacts}
-            onDelete={this.deleteContact}
-            filteredContacts={filteredContacts}
-          />
+          <Contacts contacts={filteredContacts} onDelete={this.deleteContact} />
         )}
       </PhonebookWrapper>
     );

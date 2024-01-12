@@ -6,10 +6,10 @@ import {
   FilterErrorMessage,
 } from './Contacts.styled';
 
-export const Contacts = ({ contacts, onDelete, filteredContacts }) => {
+export const Contacts = ({ contacts, onDelete }) => {
   return (
     <ContactList>
-      {filteredContacts.length !== 0 ? (
+      {contacts.length !== 0 ? (
         contacts.map(item => (
           <ContactItem key={item.id}>
             <ContactInfo>
